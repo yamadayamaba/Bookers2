@@ -1,0 +1,20 @@
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/info', users: @users %>
+    </div>
+  </div>
+<div class="col-md-8 offset-md-1">
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td><%= @user.profile_image_tag %><br />
+        <%= @user.name %></td>
+        <td><%= @book.title %></td>
+        <td><%= @book.body %></td>
+        <td><a class="btn btn-sm btn-success" href="/books/:id/edit">Edit</a></td>
+        <td><a data-confirm="本当に消しますか?" class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="/books/:id">Destroy</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
