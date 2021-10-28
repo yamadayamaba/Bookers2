@@ -12,8 +12,10 @@
         <%= @user.name %></td>
         <td><%= @book.title %></td>
         <td><%= @book.body %></td>
+        <% if @user.id == current_user.id %>
         <td><a class="btn btn-sm btn-success" href="/books/:id/edit">Edit</a></td>
         <td><a data-confirm="本当に消しますか?" class="btn btn-sm btn-danger" rel="nofollow" data-method="delete" href="/books/:id">Destroy</a></td>
+        <% end %>
       </tr>
     </tbody>
   </table>

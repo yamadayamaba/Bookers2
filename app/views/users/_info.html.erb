@@ -1,5 +1,6 @@
 <h2>user info</h2>
-<%= attachment_image_tag user, :profile_image %>
+<% users.each do |user| %>
+<%= attachment_image_tag user, :profile_image, :fill, 63,63, format: 'jpeg', fallback: "no_image.jpg" %>
 <table class="table">
   <tbody>
     <tr>
@@ -11,11 +12,11 @@
       <th><%= user.introduction %></th>
     </tr>
   </tbody>
+  <% end %>
 </table>
 <% if @user.id == current_user.id %>
 <div class="row">
-  <div class="btn btn-outline-secondary btn-block fas fa-user-cog">
-  <%= link_to, edit_user_path(user) %>
-  </div>
+  <a class="btn btn-outline-secondary btn-block fas fa-user-cog" href="/users/:id/edit">
+  </a>
 </div>
 <% end %>

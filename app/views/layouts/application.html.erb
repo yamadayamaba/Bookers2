@@ -31,8 +31,8 @@
             <li>
               <a class="fas fa-book-open nav-link text-light" href="/books">Books</a>
             </li>
-            <li class="fas fa-sign_out-alt nav-link text-light">
-              <%= link_to"Log out", destroy_user_session_path, method: :delete %>
+            <li>
+              <a class="fas fa-sign_out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a>
             </li>
           <% else %>
             <li>
