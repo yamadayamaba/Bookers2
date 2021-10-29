@@ -23,29 +23,45 @@
             <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li>
-              <a class="fas fa-home nav-link text-light" href="/user">Home</a>
+              <%= link_to user_path(current_user), class:"fas fa-home nav-link text-light" do %>
+              <span>Home</span>
+              <% end %>
             </li>
             <li>
-              <a class="fas fa-users nav-link text-light" href="/users">Users</a>
+              <%= link_to users_path, class:"fas fa-users nav-link text-light" do %>
+              <span>Users</span>
+              <% end %>
             </li>
             <li>
-              <a class="fas fa-book-open nav-link text-light" href="/books">Books</a>
+              <%= link_to books_path, class:"fas fa-book-open nav-link text-light" do %>
+              <span>Books</span>
+              <% end %>
             </li>
             <li>
-              <a class="fas fa-sign_out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a>
+              <%= link_to destroy_user_session_path, method: :delete, class:"fas fa-sign-in-alt nav-link text-light" do %>
+              <span>logout</span>
+              <% end %>
             </li>
           <% else %>
             <li>
-              <a class="fas fa-home nav-link text-light" href="/">Home</a>
+              <%= link_to root_path, class:"fas fa-home nav-link text-light" do %>
+              <span>Home</span>
+              <% end %>
             </li>
             <li>
-              <a class="fas fa-link nav-link text-light" href="/about">About</a>
+              <%= link_to home_about_path, class:"fas fa-link nav-link text-light" do %>
+              <span>About</span>
+              <% end %>
             </li>
             <li>
-              <a class="fas fa-user-plus nav-link text-light" href="/users/sign_up">Sign up</a>
+              <%= link_to new_user_registration_path, class:"fas fa-user-plus nav-link text-light" do %>
+              <span>sign up</span>
+              <% end %>
             </li>
             <li>
-              <a class="fas fa-sign-in-alt nav-link text-light" href="/users/sign_in">Log in</a>
+              <%= link_to new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light" do %>
+              <span>login</span>
+              <% end %>
             </li>
           <% end %>
             </ul>
@@ -53,6 +69,9 @@
         </div>
       </nav>
     </header>
+    <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
     <%= yield %>
   <footer>
     <div class="container mt-5">
